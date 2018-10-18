@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace laba1
+
+namespace WinFormsFileSorter
 {
-    class Program
+    internal class FileSorter
     {
-        static void Main(string[] args)
+        public static void sortFile(string file, string sortedFile)
         {
-            string filePath = @"E:\study\test.txt";
+            string filePath = @file;
             Split(filePath);
             SortTheChunks();
-            MergeTheChunks();
+            MergeTheChunks(sortedFile);
         }
 
         static void Split(string file)
@@ -62,7 +63,7 @@ namespace laba1
             }
         }
 
-        static void MergeTheChunks()
+        static void MergeTheChunks(string sortedFile)
         {
             string[] paths = Directory.GetFiles("E:\\", "sorted*.dat");
             int chunks = paths.Length;
@@ -84,7 +85,7 @@ namespace laba1
             for (int i = 0; i < chunks; i++)
                 LoadQueue(queues[i], readers[i], bufferlen);
 
-            StreamWriter sw = new StreamWriter("E:\\BigFileSorted.txt", false, Encoding.Unicode);
+            StreamWriter sw = new StreamWriter(sortedFile, false, Encoding.Unicode);
             bool done = false;
             int lowestIndex, j;
             string lowestValue;
@@ -143,5 +144,4 @@ namespace laba1
             }
         }
     }
-
 }
