@@ -31,10 +31,10 @@ namespace PhotoEditor
             if (image == null)
             {
                 throw new ArgumentNullException("image");
-            }                
+            }
 
             PointF offset = new PointF((float)image.Width / 2, (float)image.Height / 2);
-            
+
             Bitmap rotatedBmp = new Bitmap(image.Width, image.Height);
             rotatedBmp.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
@@ -79,6 +79,6 @@ namespace PhotoEditor
             ContrastCorrection cfilter = new ContrastCorrection(contrast);
 
             return bfilter.Apply(cfilter.Apply(bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), PixelFormat.Format24bppRgb)));
-        }       
+        }
     }
 }

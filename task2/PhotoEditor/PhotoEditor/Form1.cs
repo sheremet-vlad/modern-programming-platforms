@@ -94,7 +94,6 @@ namespace PhotoEditor
             PictureBox1.Image = image;
         }
 
-        //drawing 
         List<Point> list = new List<Point>();
         bool flag = false;
 
@@ -118,4 +117,3 @@ namespace PhotoEditor
         }
     }
 }
-
