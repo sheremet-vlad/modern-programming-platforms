@@ -89,4 +89,30 @@ namespace PhotoEditor
 
             PictureBox1.Source = BitmapToImageSource(image);
         }
+
+        public static Bitmap ConvertToBitmap(BitmapSource bitmapSource)
+        {
+            var width = bitmapSource.PixelWidth;
+            var height = bitmapSource.PixelHeight;
+            var stride = width * ((bitmapSource.Format.BitsPerPixel + 7) / 8);
+            var memoryBlockPointer = Marshal.AllocHGlobal(height * stride);
+            bitmapSource.CopyPixels(new Int32Rect(0, 0, width, height), memoryBlockPointer, height * stride, stride);
+            var bitmap = new Bitmap(width, height, stride, System.Drawing.Imaging.PixelFormat.Format32bppPArgb, memoryBlockPointer);
+            return bitmap;
+        }
+
+        public ImageSource BitmapToImageSource(Bitmap bmp)
+        {
+            var handle = bmp.GetHbitmap();
+            try
+            {
+                return Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            }
+            finally { DeleteObject(handle); }
+        }
+
+        [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool DeleteObject([In] IntPtr hObject);
+    }
 }
