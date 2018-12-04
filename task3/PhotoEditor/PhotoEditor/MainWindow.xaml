@@ -8,8 +8,14 @@
         Title="MainWindow" Height="600" Width="900">
     <Grid>
         <Button x:Name="ButtonOpen" Content="Open Picture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="OpenButton_Click"/>
-        <Image x:Name="PictureBox1" Margin="200, 50, 50, 50" Stretch="None"/>
+        <Image x:Name="PictureBox1" Margin="200, 50, 50, 50" Stretch="None" MouseLeftButtonDown=""/>
         <Button x:Name="ButtonRotate" Content="rotate" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="75" Click="RotateButton_Click"/>
         <TextBox x:Name="angleField" HorizontalAlignment="Left" Height="23" Margin="100,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30"/>
+        <Button x:Name="ResizeButton" Content="resize" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="75" Click="ResizeButton_Click"/>
+        <TextBox x:Name="scaleField" HorizontalAlignment="Left" Height="23" Margin="100,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" />
+        <Button x:Name="ToGrayScale" Content="ToGrayScale" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="75" Click="ToGrayScale_Click"/>
+        <Slider Maximum="100" Minimum="-100" x:Name="BrightnessBar" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,210,0,0" />
+        <Slider Maximum="100" Minimum="-100" x:Name="ContrastBar" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,210,0,0" />
+        <Button Content="contrast and brightness" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="100" Click="ContrastButton_Click"/>
     </Grid>
 </Window>
