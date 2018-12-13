@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RSSReader.Properties
+namespace MultiThreadRSSReader.Properties
 {
 
 

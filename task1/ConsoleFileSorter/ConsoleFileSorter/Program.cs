@@ -12,6 +12,7 @@ namespace laba1
         static void Main(string[] args)
         {
             string filePath = @"E:\study\test.txt";
+            Console.Write("process...");
             Split(filePath);
             SortTheChunks();
             MergeTheChunks();
@@ -26,8 +27,6 @@ namespace laba1
             {
                 while (sr.Peek() >= 0)
                 {
-                    Console.Write("spliting...   \r");
-
                     sw.WriteLine(sr.ReadLine());
 
                     if (sw.BaseStream.Length > 100000000 && sr.Peek() >= 0)
@@ -45,8 +44,6 @@ namespace laba1
         {
             foreach (string path in Directory.GetFiles("E:\\", "split*.dat"))
             {
-                Console.Write("{0}     \r", path);
-
                 string[] contents = File.ReadAllLines(path, Encoding.Unicode);
 
                 Array.Sort(contents);
